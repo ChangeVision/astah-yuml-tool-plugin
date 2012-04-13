@@ -66,8 +66,8 @@ Usage
 How to build
 ---
 1. Install the Astah Plug-in SDK - <http://astah.net/features/sdk>
-1. `git clone git://github.com/ChangeVision/yuml-tool-plugin.git`
-1. `cd yuml`
+1. `git clone git://github.com/ChangeVision/astah-yuml-tool-plugin.git`
+1. `cd astah-yuml-tool-plugin`
 1. `astah-build`
 1. `astah-launch`
 
