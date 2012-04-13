@@ -1,6 +1,6 @@
 yUML tool for Astah
 ============================
-This is an Astah plug-in which converts Astah diagrams into simple yUML diagrams.
+This is an [Astah](http://astah.net/) plug-in which converts Astah diagrams into simple [yUML](http://yuml.me/) diagrams.
 
 It is drawing yUML diagrams by using the service at yUML. 
 
@@ -22,7 +22,7 @@ What is yUML?  -  yUML FAQ](http://yuml.me/faq)
 
 Available for
 ---
-Astah Community, Astah UML, Astah Professional (6.5 or later)
+[Astah Community](http://astah.net/editions/community), [Astah UML](http://astah.net/editions/uml), [Astah Professional](http://astah.net/editions/professional) (6.5 or later)
 
 
 How to install
