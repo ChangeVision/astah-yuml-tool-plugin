@@ -1,0 +1,36 @@
+<configuration>
+	<define name="astah.edition" class="net.astah.plugin.yuml.AstahEditionPropertyDefiner" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-5p %c %X - %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${user.home}/.astah/${astah.edition}/yuml.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${user.home}/.astah/${astah.edition}/yuml.%i.log.zip
+			</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>3</MaxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>1MB</MaxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%d %-5p %c %X - %m%n</pattern>
+		</encoder>
+	</appender>
+	<!-- turn OFF all logging (children can override) -->
+	<logger name="net.astah.plugin.yuml" level="${root-log-level:-WARN}" />
+
+	<root level="${root-log-level:-WARN}">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

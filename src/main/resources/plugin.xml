@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+   <extension point="com.change_vision.astah.ui.actionSets">
+      <actionSet
+            visible="true"
+            id="net.astah.plugin.yuml.actionSet">
+         <menu
+               id="yuml"
+               label="%menu_group"
+               path="tool/export_rtf">
+         </menu>
+         <action
+			   label="%menu_label"
+               class="net.astah.plugin.yuml.action.ShowYumlAction"
+               tooltip="%menu_label"
+               menubarPath="tool/yuml/"
+               id="yuml">
+         </action>
+     </actionSet>
+   </extension>
+</plugin>
