@@ -6,31 +6,19 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import com.change_vision.jude.api.inf.model.IClass;
 import com.change_vision.jude.api.inf.presentation.IPresentation;
 
-public abstract class Relation {
-	private IPresentation presentation;
-	private IClass left;
-	private IClass right;
+public class Clazz {
+	protected IPresentation presentation;
+	protected IClass clazz;
 	
-	public Relation(IPresentation presentation, IClass left, IClass right) {
+	public Clazz(IPresentation presentation, IClass clazz) {
 		this.presentation = presentation;
-		this.left = left;
-		this.right = right;
-	}
-	
-	public IPresentation getPresentation() {
-		return presentation;
-	}
-	
-	public IClass getLeft() {
-		return left;
+		this.clazz = clazz;
 	}
 
-	public IClass getRight() {
-		return right;
+	public String toYuml() {
+		String name = ClassUtils.getNameLabel(clazz);
+		return "[" + name + "]";
 	}
-	
-	public abstract String toYuml();
-	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -44,12 +32,11 @@ public abstract class Relation {
 			return false;
 		}
 		
-		Relation rhs = (Relation) obj;
+		Clazz rhs = (Clazz) obj;
 		return new EqualsBuilder()
 					.appendSuper(super.equals(obj))
 					.append(presentation, rhs.presentation)
-					.append(left, rhs.left)
-					.append(right, rhs.right)
+					.append(clazz, rhs.clazz)
 					.isEquals();
 	}
 	
@@ -58,8 +45,7 @@ public abstract class Relation {
 		return new HashCodeBuilder()
 					.appendSuper(super.hashCode())
 					.append(presentation)
-					.append(left)
-					.append(right)
+					.append(clazz)
 					.toHashCode();
 	}
 }
