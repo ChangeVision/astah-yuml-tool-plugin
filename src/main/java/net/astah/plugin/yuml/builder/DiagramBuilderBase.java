@@ -1,13 +1,19 @@
 package net.astah.plugin.yuml.builder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.change_vision.jude.api.inf.exception.InvalidUsingException;
+import com.change_vision.jude.api.inf.model.IDiagram;
+import com.change_vision.jude.api.inf.presentation.IPresentation;
+
 import net.astah.plugin.yuml.draw.Direction;
 import net.astah.plugin.yuml.draw.DrawType;
 import net.astah.plugin.yuml.draw.Size;
 import net.astah.plugin.yuml.draw.UrlType;
 
-import com.change_vision.jude.api.inf.model.IDiagram;
-
 public abstract class DiagramBuilderBase {
+	private static final Logger logger = LoggerFactory.getLogger(DiagramBuilderBase.class);
 	public static final String DEFAULT_URL_PREFIX = "http://yuml.me/diagram/";
 
 	protected IDiagram diagram;
@@ -38,6 +44,16 @@ public abstract class DiagramBuilderBase {
 		this.direction = direction;
 		this.size = size;
 		this.urlType = urlType;
+	}
+	
+	protected IPresentation[] getPresentations(IDiagram diagram) {
+		IPresentation[] presentations = null;
+		try {
+			presentations = diagram.getPresentations();
+		} catch (InvalidUsingException e) {
+			logger.error(e.getLocalizedMessage(), e);
+		}
+		return presentations;
 	}
 	
 	public abstract String toYuml();

@@ -15,6 +15,7 @@ import com.change_vision.jude.api.inf.model.IDiagram;
 import com.change_vision.jude.api.inf.model.IModel;
 import com.change_vision.jude.api.inf.model.INamedElement;
 import com.change_vision.jude.api.inf.model.IPackage;
+import com.change_vision.jude.api.inf.model.IUseCaseDiagram;
 import com.change_vision.jude.api.inf.project.ProjectAccessor;
 import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
 import com.change_vision.jude.api.inf.ui.IPluginActionDelegate;
@@ -60,9 +61,9 @@ public class ShowYumlAction implements IPluginActionDelegate {
 		IDiagram[] diagrams = parent.getDiagrams();
         for (IDiagram diagram : diagrams) {
         	if (diagram instanceof IClassDiagram
+        			|| diagram instanceof IUseCaseDiagram
         			// TODO
 //        			|| diagram instanceof IActivityDiagram
-//        			|| diagram instanceof IUseCaseDiagram
         			) {
         		allDiagrams.add(diagram);
         	}
