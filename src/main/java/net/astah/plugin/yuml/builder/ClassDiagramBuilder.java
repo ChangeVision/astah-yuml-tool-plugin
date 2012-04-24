@@ -7,19 +7,18 @@ import net.astah.plugin.yuml.draw.Direction;
 import net.astah.plugin.yuml.draw.DrawType;
 import net.astah.plugin.yuml.draw.Size;
 import net.astah.plugin.yuml.draw.UrlType;
-import net.astah.plugin.yuml.model.Association;
-import net.astah.plugin.yuml.model.ClassUtils;
-import net.astah.plugin.yuml.model.Dependency;
-import net.astah.plugin.yuml.model.Generalization;
-import net.astah.plugin.yuml.model.Realization;
+import net.astah.plugin.yuml.model.Clazz;
 import net.astah.plugin.yuml.model.Relation;
-import net.astah.plugin.yuml.model.TemplateBinding;
-import net.astah.plugin.yuml.model.Usage;
+import net.astah.plugin.yuml.model.clazz.Association;
+import net.astah.plugin.yuml.model.clazz.Dependency;
+import net.astah.plugin.yuml.model.clazz.Generalization;
+import net.astah.plugin.yuml.model.clazz.Realization;
+import net.astah.plugin.yuml.model.clazz.TemplateBinding;
+import net.astah.plugin.yuml.model.clazz.Usage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.change_vision.jude.api.inf.exception.InvalidUsingException;
 import com.change_vision.jude.api.inf.model.IAssociation;
 import com.change_vision.jude.api.inf.model.IClass;
 import com.change_vision.jude.api.inf.model.IClassDiagram;
@@ -71,7 +70,7 @@ public class ClassDiagramBuilder extends DiagramBuilderBase {
 		yumlBuilder.append(";");
 		yumlBuilder.append(DIAGRAM_TYPE);
 		
-		List<IClass> classes = extractClassesOn(diagram);
+		List<Clazz> classes = extractClassesOn(diagram);
 		List<Relation> relations = extractRelationsOn(diagram);
 		
 		for (int i = 0; i < relations.size(); i++) {
@@ -90,43 +89,31 @@ public class ClassDiagramBuilder extends DiagramBuilderBase {
 		
 		for (int i = 0; i < classes.size(); i++) {
 			if (i > 0) yumlBuilder.append(",");
-			IClass clazz = classes.get(i);
-			String name = ClassUtils.getNameLabel(clazz);
-			yumlBuilder.append("[" + name + "]");
+			Clazz clazz = classes.get(i);
+			yumlBuilder.append(clazz.toYuml());
 			
-			logger.debug("[" + name + "]");
+			logger.debug(clazz.toYuml());
 		}
 		
 		yumlBuilder.append(urlType);
 		return yumlBuilder.toString();
 	}
 	
-	private List<IClass> extractClassesOn(IDiagram diagram) {
-		IPresentation[] presentations = null;
-		try {
-			presentations = ((IClassDiagram) diagram).getPresentations();
-		} catch (InvalidUsingException e) {
-			logger.error(e.getLocalizedMessage(), e);
-		}
+	private List<Clazz> extractClassesOn(IDiagram diagram) {
+		IPresentation[] presentations = getPresentations(diagram);
 		
-		List<IClass> classes = new ArrayList<IClass>();
+		List<Clazz> classes = new ArrayList<Clazz>();
 		for (IPresentation presentation : presentations) {
 			IElement presentationModel = presentation.getModel();
 			if (presentationModel instanceof IClass) {
-				IClass clazz = (IClass) presentationModel;
-				classes.add(clazz);
+				classes.add(new Clazz(presentation, (IClass) presentationModel));
 			}
 		}
 		return classes;
 	}
 
 	private List<Relation> extractRelationsOn(IDiagram diagram) {
-		IPresentation[] presentations = null;
-		try {
-			presentations = ((IClassDiagram) diagram).getPresentations();
-		} catch (InvalidUsingException e) {
-			logger.error(e.getLocalizedMessage(), e);
-		}
+		IPresentation[] presentations = getPresentations(diagram);
 		
 		List<Relation> relations = new ArrayList<Relation>();
 		for (IPresentation presentation : presentations) {

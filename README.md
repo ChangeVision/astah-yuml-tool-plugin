@@ -60,7 +60,7 @@ Usage
 1. [yUML] is added under the [Tool]
 1. Select [Tool] - [yUML] - [Convert to yUML diagrams]
    <img src="astah-yuml-tool-plugin/raw/master/src/main/images/menu.png" width="640"/>
-1. Select a Class diagram to convert into yUML diagram from the diagram list
+1. Select a Class/Usecase diagram to convert into yUML diagram from the diagram list
    <img src="astah-yuml-tool-plugin/raw/master/src/main/images/screenshot.png" width="640"/>
 
 How to build
