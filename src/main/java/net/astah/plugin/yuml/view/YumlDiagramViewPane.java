@@ -10,7 +10,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 import javax.swing.BoxLayout;
@@ -30,6 +30,8 @@ import net.astah.plugin.yuml.builder.ClassDiagramBuilder;
 import net.astah.plugin.yuml.builder.UseCaseDiagramBuilder;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.change_vision.jude.api.inf.model.IActivityDiagram;
 import com.change_vision.jude.api.inf.model.IClassDiagram;
@@ -38,6 +40,7 @@ import com.change_vision.jude.api.inf.model.IUseCaseDiagram;
 
 @SuppressWarnings("serial")
 public class YumlDiagramViewPane extends JPanel {
+	private static final Logger logger = LoggerFactory.getLogger(YumlDiagramViewPane.class);
 	private static final int DEFAULT_URL_FIELD_ROWS = 3;
 	private static final int DEFAULT_URL_FIELD_COLUMNS = 120;
 	private JTextArea urlField;
@@ -119,7 +122,7 @@ public class YumlDiagramViewPane extends JPanel {
 			protected String doInBackground() throws Exception {
 				astahImageLabel.setText("Now drawing...");
 				astahImageLabel.setIcon(null);
-				String imagePath = diagram.exportImage(System.getProperty("java.io.tmp"), "png", 72);
+				String imagePath = diagram.exportImage(System.getProperty("java.io.tmpdir"), "png", 72);
 				return imagePath;
 			}
 			
@@ -127,7 +130,7 @@ public class YumlDiagramViewPane extends JPanel {
 			public void done() {
 				try {
 					String imageRelativePath = get();
-					String imageAbsolutePath = System.getProperty("java.io.tmp") + File.separator + imageRelativePath;
+					String imageAbsolutePath = System.getProperty("java.io.tmpdir") + File.separator + imageRelativePath;
 					astahImageLabel.setText("");
 					astahImageLabel.setIcon(new ImageIcon(imageAbsolutePath));
 				} catch (Exception e) {
@@ -169,14 +172,17 @@ public class YumlDiagramViewPane extends JPanel {
 		}
 		
 		try {
-			ImageIcon imageIcon = new ImageIcon(new URL(yumlUrl));
+			URL url = new URL(yumlUrl);
+			URI uri = new URI(url.getProtocol(), url.getAuthority(), url.getPath(), null, null);
+			ImageIcon imageIcon = new ImageIcon(new URL(uri.toASCIIString()));
 			int status = imageIcon.getImageLoadStatus();
 			if (status == MediaTracker.ABORTED || status == MediaTracker.ERRORED) {
 				return "yUML diagram can't be loaded.";
 			} else {
 				return imageIcon;
 			}
-		} catch (MalformedURLException e) {
+		} catch (Exception e) {
+			logger.warn(e.getLocalizedMessage(), e);
 			return e.getLocalizedMessage();
 		}
 	}
