@@ -27,7 +27,7 @@ Available for
 
 How to install
 ---
-Deploy the jar file you downloaded from [yUML tool for Astah](https://github.com/ChangeVision/astah-yuml-tool-plugin/downloads), in the **"plugins"** folder…
+Deploy the [jar file](https://github.com/ChangeVision/astah-yuml-tool-plugin/downloads) you downloaded from [yUML tool for Astah](https://github.com/ChangeVision/astah-yuml-tool-plugin/downloads), in the **"plugins"** folder…
 
  * e.g.) for Community edition
    
