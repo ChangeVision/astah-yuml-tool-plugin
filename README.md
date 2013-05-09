@@ -4,7 +4,7 @@ This is an [Astah](http://astah.net/) plug-in which converts Astah diagrams into
 
 It is drawing yUML diagrams by using the service at yUML. 
 
-<img src="astah-yuml-tool-plugin/raw/master/src/main/images/screenshot.png" width="720"/>
+<img src="https://raw.github.com/ChangeVision/astah-yuml-tool-plugin/master/src/main/images/screenshot.png" width="720"/>
 
 What is yUML?
 ---
@@ -60,9 +60,9 @@ Usage
 1. Open the .asta file
 1. [yUML] is added under the [Tool]
 1. Select [Tool] - [yUML] - [Convert to yUML diagrams]
-   <img src="astah-yuml-tool-plugin/raw/master/src/main/images/menu.png" width="640"/>
+   <img src="https://raw.github.com/ChangeVision/astah-yuml-tool-plugin/master/src/main/images/menu.png" width="640"/>
 1. Select a Class/Usecase diagram to convert into yUML diagram from the diagram list
-   <img src="astah-yuml-tool-plugin/raw/master/src/main/images/screenshot.png" width="640"/>
+   <img src="https://raw.github.com/ChangeVision/astah-yuml-tool-plugin/master/src/main/images/screenshot.png" width="640"/>
 
 How to build
 ---
