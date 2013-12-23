@@ -12,8 +12,8 @@
 	<groupId>net.astah.plugin</groupId>
 	<artifactId>yuml</artifactId>
 	<packaging>jar</packaging>
-	<name>yUML tool for Astah</name>
-	<description>Convert Astah diagrams into simple yUML diagrams.</description>
+	<name>%bundle.name</name>
+	<description>%bundle.description</description>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>local_astah_repository</id>
