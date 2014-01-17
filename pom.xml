@@ -5,8 +5,8 @@
 		<bundle.symbolicName>net.astah.plugin.yuml</bundle.symbolicName>
 		<bundle.namespace>net.astah.plugin.yuml</bundle.namespace>
 		<plugin.install>true</plugin.install>
-		<astah.version>6.5</astah.version>
-		<astah.edition>all</astah.edition>
+		<astah.version>6.6</astah.version>
+		<astah.edition>com,uml,pro</astah.edition>
 	</properties>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.astah.plugin</groupId>
