@@ -22,13 +22,13 @@ What is yUML?  -  yUML FAQ](http://yuml.me/faq)
 
 Available for
 ---
-[Astah Community](http://astah.net/editions/community), [Astah UML](http://astah.net/editions/uml), [Astah Professional](http://astah.net/editions/professional) (6.5 or later)
+[Astah Community](http://astah.net/editions/community), [Astah UML](http://astah.net/editions/uml), [Astah Professional](http://astah.net/editions/professional) (6.6 or later)
 
 
 How to install
 ---
 [Download jar file.](http://astah.change-vision.com/plugins/yuml/0.2.0.html)  
-Deploy the jar file you downloaded from [yUML tool for Astah](https://github.com/ChangeVision/astah-yuml-tool-plugin/downloads), in the **"plugins"** folder…
+Deploy the jar file you downloaded from [yUML tool for Astah](https://github.com/ChangeVision/astah-yuml-tool-plugin/downloads), in the **"plugins"** folder.
 
  * e.g.) for Community edition
    
@@ -36,7 +36,7 @@ Deploy the jar file you downloaded from [yUML tool for Astah](https://github.com
    
    `/Applications/astah community/plguins/`
    
-   `C:¥Program Files¥astah-community¥plugins¥`
+   `C:\Program Files\astah-community\plugins\`
 
  * e.g.) for UML edition
    
@@ -44,7 +44,7 @@ Deploy the jar file you downloaded from [yUML tool for Astah](https://github.com
    
    `/Applications/astah UML/plguins/`
    
-   `C:¥Program Files¥astah-UML¥plugins¥`
+   `C:\Program Files\astah-UML\plugins\`
    
  * e.g.) for Professional edition
    
@@ -52,7 +52,7 @@ Deploy the jar file you downloaded from [yUML tool for Astah](https://github.com
    
    `/Applications/astah professional/plguins/`
    
-   `C:¥Program Files¥astah-professional¥plugins/`
+   `C:\Program Files\astah-professional\plugins\`
 
 Usage
 ---
@@ -78,7 +78,7 @@ How to build
 
 License
 ---
-Copyright 2012 Change Vision, Inc.
+Copyright 2014 Change Vision, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
